@@ -1,7 +1,7 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: "jdbc:mysql://localhost:3306/history_gradle_security_new?useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
+    url: "jdbc:mysql://localhost:3306/vehicle_mobile_2024?useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
     username: root
     password: ${password}
   sql:
@@ -35,7 +35,7 @@ app:
   default:
     password: pako
 server:
-  port: 1032
+  port: 1033
 logging:
   level:
     org.springframework.security: TRACE
