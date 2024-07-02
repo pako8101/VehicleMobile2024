@@ -39,3 +39,9 @@ server:
 logging:
   level:
     org.springframework.security: TRACE
+
+    forex:
+      api:
+        key: ${app-id:}
+        url: "https://openexchangerates.org/api/latest.json?app_id={app_id}"
+        base: "USD"

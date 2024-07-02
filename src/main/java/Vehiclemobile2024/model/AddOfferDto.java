@@ -11,7 +11,7 @@ public record AddOfferDto(
        @NotNull EngineTypeEnum engineType
 ) {
     public static AddOfferDto empty(){
-        return new AddOfferDto(null,null,null);
+        return new AddOfferDto(null,56,null);
     }
 
     @Override

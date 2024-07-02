@@ -2,10 +2,14 @@ package Vehiclemobile2024.service.impl;
 
 import Vehiclemobile2024.model.AddOfferDto;
 import Vehiclemobile2024.model.OfferDetailsDto;
+import Vehiclemobile2024.model.OfferSummaryDto;
 import Vehiclemobile2024.model.entity.OfferEntity;
 import Vehiclemobile2024.model.repository.OfferRepository;
 import Vehiclemobile2024.service.OfferService;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class OfferServiceImpl implements OfferService {
@@ -30,6 +34,27 @@ public class OfferServiceImpl implements OfferService {
 
         return null;
     }
+
+    @Override
+    public List<OfferSummaryDto> getAllOffersSummary() {
+        return offerRepository.findAll()
+                .stream()
+                .map(OfferServiceImpl::toOfferSummaryDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public void deleteOffer(long id) {
+        offerRepository.deleteById(id);
+    }
+
+    private static OfferSummaryDto toOfferSummaryDto(OfferEntity offerEntity){
+        return new OfferSummaryDto(offerEntity.getId(),
+                offerEntity.getDescription(),
+                offerEntity.getMileage(),
+                offerEntity.getEngine());
+    }
+
     private static OfferDetailsDto toofferDetailsDto(OfferEntity offerEntity){
         return new OfferDetailsDto(offerEntity.getId(),
                 offerEntity.getDescription(),
